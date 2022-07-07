@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Keep Up</title>
+    <link href='https://css.gg/user.css' rel='stylesheet'>
+    <link href='https://css.gg/push-right.css' rel='stylesheet'>    
+    {% load static %} <!------ Enlace con la hoja de estilos  --------->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head> 
+
+<body>
+  
+    <section class="inicio--interface">
+
+        <div class="inicio--interface-wll"></div>
+
+        <div class="login--admin">
+        <i class="gg-user"></i>
+             <a class="admin" href="http://127.0.0.1:8000/admin/login/?next=/admin/" >Login Admin</a>
+
+        </div>
+
+        <div class="content--interf">
+            <img class="img-content--interf" src="http://assets.stickpng.com/images/5aa78e387603fc558cffbf1d.png">
+            <p class="title-content--interf">Prueba Keep<span>Up</span></p>
+            <p class="txt-content--interf">Sitio web de noticias y medios de comunicación</p>
+            <a class="btn-content--interf" href="#noticias">VER NOTICIAS</a>
+        </div>  
+
+    </section>
+
+   
+    
+    <section class="news--container" id="noticias">
+    <!-- Se muestra todo lo encontrado en las entradas de ariculos que el administrador ingresa -->
+
+         <h1 class="title" >Ultimas Noticias Agregadas</h1>
+
+        {% for elemento in articulos %} <!-- Recorre todos los articulos que se le mandan desde views -->
+
+            <article class="news">
+                <h3 class="title--news">{{ elemento.nombre }}</h3>
+                <p class="content--news">
+                    {{elemento.contenido}}
+                </p>
+                <img class="img--news" src="{{elemento.imagen}}"><br>
+               <a class="view--news" href="{{elemento.viewmore}}">> Ver Noticia</a> 
+                
+                
+                <p class="autor--news">  
+                    Autor: {{elemento.autor}} 
+                </p>
+           
+            </article>
+        {% endfor %}
+
+    </section>
+</body>
+
+
+</html>
